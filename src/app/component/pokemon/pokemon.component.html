@@ -1,8 +1,10 @@
 <div>
-  <img src={{pokemon?.sprites.front_default}}>
-  <img src={{pokemon?.sprites.back_default}}>
-
+  <app-search-bar (keyup)="getPokemon($event)"></app-search-bar>
+  <button (click)="confirmPokemon()">Search Pokemon</button>
+  <div>
+    <img src={{pokemon?.sprites.front_default}}>
+    <img src={{pokemon?.sprites.back_default}}>
+  </div>
   <p *ngFor="let stat of pokemon?.stats">{{stat.stat.name}}: {{ stat.base_stat }}</p>
-
-  <p>{{pokemon?.weight ? "Weight: " + pokemon.weight + " pounds" : ""}}</p>
+  <p>{{ pokemon?.weight ? "Weight: " + pokemon.weight + " pounds" : ""}}</p>
 </div>
