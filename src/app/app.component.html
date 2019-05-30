@@ -1,8 +1,9 @@
 <div>
   <div class="container">
-    <app-pokemon class="firstPokedex pokedex"></app-pokemon>
+    <!-- <h1>{{statData.data1}}</h1> -->
+    <app-pokemon (pokeStats)="statData.data1=$event" [statData]='statData' class="firstPokedex pokedex"></app-pokemon>
     <img class="pokeball-gif" src="https://media.giphy.com/media/klNrnUSZrzZLO/giphy.gif">
-    <app-pokemon class="secondPokedex pokedex"></app-pokemon>
+    <app-pokemon (pokeStats)="statData.data2=$event" [statData]='statData' class="secondPokedex pokedex"></app-pokemon>
   </div>
   <div class="footer">
   </div>

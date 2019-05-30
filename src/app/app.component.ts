@@ -7,16 +7,13 @@ import { InteractionService } from './interaction.service';
 })
 export class AppComponent {
   title = 'pokedex-project';
-  pokemon;
-  search;
+  public statData = {
+    data1: "",
+    data2: "data2bingiii"
+  }
+  public message = "";
+
 
   constructor(private _interactionService: InteractionService) { }
-
-  getPokemon(event) {
-    this.search = event.target.value;
-  }
-
-  confirmPokemon() {
-    this._interactionService.sendMessage(this.search);
-  }
+  //   this._interactionService.sendMessage();
 }

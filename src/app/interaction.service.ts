@@ -25,9 +25,9 @@ export class InteractionService {
   //   }
   // }
 
-  sendMessage(message: string) {
-    this.getPokemon(message).then(() => {
-      this._messageSource.next(this.pokemon);
-    })
-  }
+  // sendMessage(message: string) {
+  //   this.getPokemon(message).then(() => {
+  //     this._messageSource.next(this.pokemon);
+  //   })
+  // }
 }
