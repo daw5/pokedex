@@ -28,6 +28,12 @@ export class PokemonComponent implements OnInit {
     }
   }
 
+  onKeyDown(event) {
+    if (event.key === 'Enter') {
+      this.confirmPokemon();
+    }
+  }
+
 
   getPokemon(pokemon) {
     this.search = pokemon.target.value;

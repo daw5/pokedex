@@ -1,0 +1,14 @@
+.search-bar {
+    width: 90%;
+    margin: auto;
+}
+
+.search-bar-container {
+    background-color: green;
+    width: 400px;
+    margin: auto;
+    display: flex;
+    border: 5px solid green;
+    border-radius: 10px;
+    background-color: black;
+}
