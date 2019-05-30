@@ -5,10 +5,10 @@
 
 .search-bar-container {
     background-color: green;
-    width: 400px;
+    width: 100px;
     margin: auto;
     display: flex;
-    border: 5px solid green;
+    border: 5px solid blue;
     border-radius: 10px;
     background-color: black;
 }

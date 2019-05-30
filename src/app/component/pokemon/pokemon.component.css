@@ -1,5 +1,6 @@
 .error {
-    color: crimson;
+    color: black;
+    margin: 10px auto;
 }
 
 :host(.firstPokedex) {
