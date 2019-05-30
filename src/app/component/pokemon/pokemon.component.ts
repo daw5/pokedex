@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InteractionService } from '../../interaction.service';
 import * as Pokedex from 'pokeapi-js-wrapper';
+import { stringify } from '@angular/compiler/src/util';
 const P = new Pokedex.Pokedex();
 
 @Component({
@@ -15,6 +16,7 @@ export class PokemonComponent implements OnInit {
   pokemon;
   search;
   error;
+  searchInput: string;
 
   async confirmPokemon() {
     try {
@@ -31,6 +33,8 @@ export class PokemonComponent implements OnInit {
   onKeyDown(event) {
     if (event.key === 'Enter') {
       this.confirmPokemon();
+      event.target.value = '';
+
     }
   }
 
