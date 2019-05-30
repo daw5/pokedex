@@ -2,10 +2,16 @@
     display: flex;
     background-image: linear-gradient(blue, black);
     width: 100%;
-    height: 100%
+    height: 100%;
 }
 
 .pokeball-gif {
     width: 40%;
     height: 40%;
+}
+
+.footer {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
 }
