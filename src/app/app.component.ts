@@ -7,6 +7,8 @@ import { InteractionService } from './interaction.service';
 })
 export class AppComponent {
   title = 'pokedex-project';
+  public pokedex1 = true;
+  public pokedex2 = true;
   public statData = {
     data1: "",
     data2: "data2bingiii"

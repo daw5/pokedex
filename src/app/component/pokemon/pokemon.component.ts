@@ -14,12 +14,14 @@ export class PokemonComponent implements OnInit {
   constructor(private _interactionService: InteractionService) { }
 
   pokemon;
-  stats = {};
+  statDifferences = [];
   search: string;
   error: string;
   searchInput: string;
   @Input() public secretMessage: string;
   @Input() public statData;
+  @Input() public pokedex1: boolean;
+  @Input() public pokedex2: boolean;
   @Output() public pokeStats = new EventEmitter();
 
   async confirmPokemon() {
@@ -34,10 +36,28 @@ export class PokemonComponent implements OnInit {
     }
   }
 
+  pusher(diff) {
+    if (!isNaN(diff)) {
+      this.statDifferences.push(diff);
+    }
+  }
+
   fireEvent() {
     this.pokeStats.emit(this.pokemon.stats);
+    if (this.pokedex1) {
+      for (let i = 0; i < this.statData.data1.length; i++) {
+        let diff = this.statData.data1[i].base_stat - this.statData.data2[i].base_stat;
+        this.pusher(diff);
+      }
+    } else {
+      for (let i = 0; i < this.statData.data2.length; i++) {
+        let diff = this.statData.data2[i].base_stat - this.statData.data1[i].base_stat;
+        this.pusher(diff);
+      }
+    }
     console.log('data 1: ', this.statData.data1);
     console.log('data 2: ', this.statData.data2);
+    console.log('statdifferences: ', this.statDifferences, this.pokedex1, this.pokedex2)
   }
 
   onKeyDown(event) {
@@ -54,10 +74,10 @@ export class PokemonComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this._interactionService.message$.subscribe(
-      message => {
-        this.stats = message;
-      }
-    );
+    // this._interactionService.message$.subscribe(
+    //   message => {
+    //     this.stats = message;
+    //   }
+    // );
   }
 }

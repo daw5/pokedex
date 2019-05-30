@@ -1,6 +1,5 @@
 <div class="pokedex-container">
   <app-search-bar (keydown)="onKeyDown($event)" (keyup)="getPokemon($event)"></app-search-bar>
-  <!-- <h1>Data 1 {{ statData?.data1 }}</h1> -->
   <div class="pokedex-data-container">
     <div class="pokedex-data">
       <div class="error-container">
@@ -11,6 +10,8 @@
         <img src={{pokemon?.sprites.back_default}}>
       </div>
       <p *ngFor="let stat of pokemon?.stats">{{stat.stat.name}}: {{ stat.base_stat }}</p>
+      <p class="statDifferences" *ngFor="let statDiff of statDifferences">{{
+        statDiff }}</p>
       <p>{{ pokemon?.weight ? "weight: " + pokemon.weight + " pounds" : ""}}</p>
     </div>
   </div>
