@@ -1,6 +1,7 @@
 <div>
   <app-search-bar (keyup)="getPokemon($event)"></app-search-bar>
   <button (click)="confirmPokemon()">Search Pokemon</button>
+  <p class="error">{{error && "Pokemon not found"}}</p>
   <div>
     <img src={{pokemon?.sprites.front_default}}>
     <img src={{pokemon?.sprites.back_default}}>

@@ -14,15 +14,17 @@ export class PokemonComponent implements OnInit {
 
   pokemon;
   search;
+  error;
 
   async confirmPokemon() {
     try {
       this.pokemon = await P.getPokemonByName(this.search);
+      this.error = "";
     }
 
     catch (err) {
       console.log(err.message);
-
+      this.error = err.message;
     }
   }
 
