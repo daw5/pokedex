@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InteractionService } from '../../interaction.service';
-const Pokedex = require('pokeapi-js-wrapper');
-const P = new Pokedex.Pokedex();
+
 
 @Component({
   selector: 'app-pokemon',
