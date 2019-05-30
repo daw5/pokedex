@@ -29,6 +29,10 @@
     display: flex;
 }
 
+.error-container {
+    display: flex;
+}
+
 .pokedex-data {
     margin: auto;
 }

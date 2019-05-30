@@ -1,8 +1,10 @@
 <div class="pokedex-container">
+  <app-search-bar (keydown)="onKeyDown($event)" (keyup)="getPokemon($event)"></app-search-bar>
   <div class="pokedex-data-container">
     <div class="pokedex-data">
-      <app-search-bar (keydown)="onKeyDown($event)" (keyup)="getPokemon($event)"></app-search-bar>
-      <p class="error">{{error && "Pokemon not found"}}</p>
+      <div class="error-container">
+        <p class="error">{{error && "Pokemon not found"}}</p>
+      </div>
       <div>
         <img src={{pokemon?.sprites.front_default}}>
         <img src={{pokemon?.sprites.back_default}}>

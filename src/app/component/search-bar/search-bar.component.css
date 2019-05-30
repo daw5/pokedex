@@ -1,6 +1,7 @@
 .search-bar {
     width: 90%;
     margin: auto;
+    border-radius: 10px;
 }
 
 .search-bar-container {
