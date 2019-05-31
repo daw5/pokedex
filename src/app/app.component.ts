@@ -12,7 +12,7 @@ export class AppComponent {
   public statData = {
     data1: null,
     data2: null,
-    statDifferences: [0]
+    statDifferences: []
   }
   public message = "";
 
