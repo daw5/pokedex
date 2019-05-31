@@ -10,10 +10,36 @@ export class AppComponent {
   public pokedex1 = true;
   public pokedex2 = true;
   public statData = {
-    data1: "",
-    data2: "data2bingiii"
+    data1: null,
+    data2: null,
+    statDifferences: [0]
   }
   public message = "";
+
+  pusher(diff) {
+    if (!isNaN(diff)) {
+      this.statData.statDifferences.push(diff);
+    }
+  }
+
+  calcStatDiff() {
+    for (let i = 0; i < this.statData.data2.length; i++) {
+      let diff = this.statData.data2[i].base_stat - this.statData.data1[i].base_stat;
+      this.pusher(diff);
+    }
+  }
+
+  updateData1(data) {
+    this.statData.statDifferences = [];
+    this.statData.data1 = data;
+    this.calcStatDiff();
+  }
+
+  updateData2(data) {
+    this.statData.statDifferences = [];
+    this.statData.data2 = data;
+    this.calcStatDiff();
+  }
 
 
   constructor(private _interactionService: InteractionService) { }

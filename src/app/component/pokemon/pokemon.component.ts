@@ -43,22 +43,9 @@ export class PokemonComponent implements OnInit {
 
   fireEvent() {
     this.pokeStats.emit(this.pokemon.stats);
-    if (this.pokedex1) {
-      this.statDifferences = [];
-      for (let i = 0; i < this.statData.data1.length; i++) {
-        let diff = this.statData.data1[i].base_stat - this.statData.data2[i].base_stat;
-        this.pusher(diff);
-      }
-    } else {
-      this.statDifferences = [];
-      for (let i = 0; i < this.statData.data2.length; i++) {
-        let diff = this.statData.data2[i].base_stat - this.statData.data1[i].base_stat;
-        this.pusher(diff);
-      }
-    }
     console.log('data 1: ', this.statData.data1);
     console.log('data 2: ', this.statData.data2);
-    console.log('statdifferences: ', this.statDifferences, this.pokedex1, this.pokedex2)
+    console.log('statdifferences: ', this.statData.statDifferences, this.pokedex1, this.pokedex2)
   }
 
   onKeyDown(event) {
