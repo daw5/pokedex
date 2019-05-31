@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { InteractionService } from '../../interaction.service';
 import * as Pokedex from 'pokeapi-js-wrapper';
+import { Howl, Howler } from 'howler';
 import { stringify } from '@angular/compiler/src/util';
 const P = new Pokedex.Pokedex();
 
@@ -43,6 +44,10 @@ export class PokemonComponent implements OnInit {
 
   fireEvent() {
     this.pokeStats.emit(this.pokemon.stats);
+    var sound = new Howl({
+      src: ['/assets/old/' + this.pokemon.id + '.ogg']
+    });
+    sound.play();
     console.log('data 1: ', this.statData.data1);
     console.log('data 2: ', this.statData.data2);
     console.log('statdifferences: ', this.statData.statDifferences, this.pokedex1, this.pokedex2)

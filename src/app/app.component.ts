@@ -29,14 +29,18 @@ export class AppComponent {
     }
   }
 
-  updateData1(data) {
+  resetStatDiff() {
     this.statData.statDifferences = [];
+  }
+
+  updateData1(data) {
+    this.resetStatDiff();
     this.statData.data1 = data;
     this.calcStatDiff();
   }
 
   updateData2(data) {
-    this.statData.statDifferences = [];
+    this.resetStatDiff();
     this.statData.data2 = data;
     this.calcStatDiff();
   }
