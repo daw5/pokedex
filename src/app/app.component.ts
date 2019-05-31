@@ -10,8 +10,8 @@ export class AppComponent {
   public pokedex1 = true;
   public pokedex2 = true;
   public statData = {
-    data1: null,
-    data2: null,
+    data1: [],
+    data2: [],
     statDifferences: []
   }
   public message = "";
