@@ -15,7 +15,6 @@ export class PokemonComponent implements OnInit {
   constructor(private _interactionService: InteractionService) { }
 
   pokemon;
-  statDifferences = [];
   search: string;
   error: string;
   searchInput: string;
@@ -26,19 +25,14 @@ export class PokemonComponent implements OnInit {
 
   async confirmPokemon() {
     try {
-      this.pokemon = await P.getPokemonByName(this.search);
       this.error = "";
+      this.pokemon = await P.getPokemonByName(this.search);
+      return this.pokemon;
     }
 
     catch (err) {
       console.log(err.message);
       this.error = err.message;
-    }
-  }
-
-  pusher(diff) {
-    if (!isNaN(diff)) {
-      this.statDifferences.push(diff);
     }
   }
 
@@ -55,8 +49,10 @@ export class PokemonComponent implements OnInit {
 
   onKeyDown(event) {
     if (event.key === 'Enter') {
-      this.confirmPokemon().then(() => {
-        this.fireEvent()
+      this.confirmPokemon().then((pokemon) => {
+        if (pokemon) {
+          this.fireEvent()
+        }
       })
       event.target.value = '';
     }
