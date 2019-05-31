@@ -26,12 +26,11 @@ export class PokemonComponent implements OnInit {
   async confirmPokemon() {
     try {
       this.error = "";
-      this.pokemon = await P.getPokemonByName(this.search);
+      this.pokemon = await P.getPokemonByName(this.search.toLowerCase());
       return this.pokemon;
     }
 
     catch (err) {
-      console.log(err.message);
       this.error = err.message;
     }
   }

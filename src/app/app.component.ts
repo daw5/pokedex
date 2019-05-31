@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { InteractionService } from './interaction.service';
+import ApexCharts from 'apexcharts';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'pokedex-project';
   public pokedex1 = true;
   public pokedex2 = true;
@@ -22,10 +24,84 @@ export class AppComponent {
     }
   }
 
+  curateStats(data) {
+    let curatedStats = [];
+    for (var i = 0; i < data.length; i++) {
+      curatedStats.push(data[i].base_stat);
+    }
+    return curatedStats;
+  }
+
+  plot() {
+    document.getElementById("chart").innerHTML = "";
+    var options = {
+      chart: {
+        height: 350,
+        type: 'bar',
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          endingShape: 'rounded'
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+      },
+      series: [{
+        name: 'Pokemon 1',
+        data: this.curateStats(this.statData.data1)
+      }, {
+        name: 'Pokemon 2',
+        data: this.curateStats(this.statData.data2)
+      }],
+      xaxis: {
+        categories: ['Speed', 'Special Defense', 'Special Attack', 'Defense', 'Special Defense', 'HP'],
+      },
+      yaxis: {
+        title: {
+          text: 'Statistics'
+        }
+      },
+      fill: {
+        opacity: 1
+
+      },
+      tooltip: {
+        y: {
+          formatter: function (val) {
+            return "$ " + val + " Statistics"
+          }
+        }
+      }
+    }
+
+    var chart = new ApexCharts(
+      document.querySelector("#chart"),
+      options
+    );
+
+    chart.render();
+  }
+
+  toggleChart() {
+    console.log('oh shes togglin!');
+    document.getElementById("chart").classList.toggle("hidden");
+  }
+
   calcStatDiff() {
     for (let i = 0; i < this.statData.data2.length; i++) {
       let diff = this.statData.data2[i].base_stat - this.statData.data1[i].base_stat;
-      this.pusher(diff);
+      this.pusher(diff > 0 ? '+' + diff : diff);
+    }
+    if (this.statData.data1.length > 1 && this.statData.data2.length > 1) {
+      this.plot();
     }
   }
 
