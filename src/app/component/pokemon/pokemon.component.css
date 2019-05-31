@@ -38,7 +38,12 @@
 }
 
 .statDifferences {
-    color: green;
+    color: rgb(19, 219, 19);
+    font-weight: bold;
+}
+
+.statDifferencesNegative {
+    color: rgba(240, 240, 4, 0.986);
 }
 
 .statDiv {
