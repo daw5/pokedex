@@ -9,10 +9,14 @@
         <img src={{pokemon?.sprites.front_default}}>
         <img src={{pokemon?.sprites.back_default}}>
       </div>
-      <p *ngFor="let stat of pokemon?.stats">{{stat.stat.name}}: {{ stat.base_stat }}</p>
-      <p class="statDifferences" *ngFor="let statDiff of statDifferences">{{
-        statDiff }}</p>
-      <p>{{ pokemon?.weight ? "weight: " + pokemon.weight + " pounds" : ""}}</p>
+      <div class="statDiv">
+        <p *ngFor="let stat of pokemon?.stats">{{stat.stat.name}}: {{ stat.base_stat }}</p>
+        <p>{{ pokemon?.weight ? "weight: " + pokemon.weight + " pounds" : ""}}</p>
+      </div>
+      <div class="statDiffDiv">
+        <p class="statDifferences" *ngFor="let statDiff of statDifferences">{{
+          statDiff }}</p>
+      </div>
     </div>
   </div>
 </div>

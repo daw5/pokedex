@@ -18,7 +18,6 @@ export class PokemonComponent implements OnInit {
   search: string;
   error: string;
   searchInput: string;
-  @Input() public secretMessage: string;
   @Input() public statData;
   @Input() public pokedex1: boolean;
   @Input() public pokedex2: boolean;
