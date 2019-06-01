@@ -22,11 +22,14 @@ export class PokemonComponent implements OnInit {
   @Input() public pokedex1: boolean;
   @Input() public pokedex2: boolean;
   @Output() public pokeStats = new EventEmitter();
+  @Output() public pokemonData = new EventEmitter();
 
   async confirmPokemon() {
     try {
+      let pokemon = this.search.toLowerCase();
       this.error = "";
-      this.pokemon = await P.getPokemonByName(this.search.toLowerCase());
+      this.pokemonData.emit(pokemon);
+      this.pokemon = await P.getPokemonByName(pokemon);
       return this.pokemon;
     }
 
@@ -41,9 +44,6 @@ export class PokemonComponent implements OnInit {
       src: ['/assets/old/' + this.pokemon.id + '.ogg']
     });
     sound.play();
-    console.log('data 1: ', this.statData.data1);
-    console.log('data 2: ', this.statData.data2);
-    console.log('statdifferences: ', this.statData.statDifferences, this.pokedex1, this.pokedex2)
   }
 
   onKeyDown(event) {

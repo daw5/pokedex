@@ -9,6 +9,10 @@ import ApexCharts from 'apexcharts';
 export class AppComponent {
 
   title = 'pokedex-project';
+  public pokemonData = {
+    pokemon1: "",
+    pokemon2: ""
+  }
   public pokedex1 = true;
   public pokedex2 = true;
   public statData = {
@@ -24,6 +28,14 @@ export class AppComponent {
     }
   }
 
+  setPokemonName(event, pokemon) {
+    if (pokemon == 1) {
+      this.pokemonData.pokemon1 = event;
+    } else {
+      this.pokemonData.pokemon2 = event;
+    }
+  }
+
   curateStats(data) {
     let curatedStats = [];
     for (var i = 0; i < data.length; i++) {
@@ -33,6 +45,7 @@ export class AppComponent {
   }
 
   plot() {
+    console.log("this pokemon: ", this.pokemonData)
     document.getElementById("chart").innerHTML = "";
     var options = {
       chart: {
@@ -55,31 +68,19 @@ export class AppComponent {
         colors: ['transparent']
       },
       series: [{
-        name: 'Pokemon 1',
+        name: this.pokemonData.pokemon1,
         data: this.curateStats(this.statData.data1)
       }, {
-        name: 'Pokemon 2',
+        name: this.pokemonData.pokemon2,
         data: this.curateStats(this.statData.data2)
       }],
       xaxis: {
         categories: ['Speed', 'Special Defense', 'Special Attack', 'Defense', 'Special Defense', 'HP'],
       },
-      yaxis: {
-        title: {
-          text: 'Statistics'
-        }
-      },
       fill: {
         opacity: 1
 
       },
-      tooltip: {
-        y: {
-          formatter: function (val) {
-            return "$ " + val + " Statistics"
-          }
-        }
-      }
     }
 
     var chart = new ApexCharts(
