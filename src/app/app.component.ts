@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { InteractionService } from './interaction.service';
-import ApexCharts from 'apexcharts';
+import * as ApexCharts from 'apexcharts';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
