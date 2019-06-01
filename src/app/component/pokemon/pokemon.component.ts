@@ -15,6 +15,9 @@ export class PokemonComponent implements OnInit {
   constructor(private _interactionService: InteractionService) { }
 
   pokemon;
+  spriteType = 1;
+  spriteFront;
+  spriteBack;
   search: string;
   error: string;
   searchInput: string;
@@ -23,6 +26,7 @@ export class PokemonComponent implements OnInit {
   @Input() public pokedex2: boolean;
   @Output() public pokeStats = new EventEmitter();
   @Output() public pokemonData = new EventEmitter();
+
 
   async confirmPokemon() {
     try {
@@ -40,10 +44,26 @@ export class PokemonComponent implements OnInit {
 
   fireEvent() {
     this.pokeStats.emit(this.pokemon.stats);
+    console.log('pokemon: ', this.pokemon)
+    this.spriteFront = this.pokemon.sprites.front_default;
+    this.spriteBack = this.pokemon.sprites.back_default;
+    console.log('sprite front: ', this.spriteFront)
     var sound = new Howl({
       src: ['/assets/old/' + this.pokemon.id + '.ogg']
     });
     sound.play();
+  }
+
+  toggleSprites() {
+    if (this.spriteType == 2) {
+      this.spriteType = 1;
+      this.spriteFront = this.pokemon.sprites.front_default;
+      this.spriteBack = this.pokemon.sprites.back_default;
+    } else {
+      this.spriteType = 2;
+      this.spriteFront = this.pokemon.sprites.front_shiny;
+      this.spriteBack = this.pokemon.sprites.back_shiny;
+    }
   }
 
   onKeyDown(event) {

@@ -45,7 +45,6 @@ export class AppComponent {
   }
 
   plot() {
-    console.log("this pokemon: ", this.pokemonData)
     document.getElementById("chart").innerHTML = "";
     var options = {
       chart: {
@@ -60,7 +59,7 @@ export class AppComponent {
         },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       stroke: {
         show: true,
@@ -79,7 +78,6 @@ export class AppComponent {
       },
       fill: {
         opacity: 1
-
       },
     }
 
@@ -89,11 +87,6 @@ export class AppComponent {
     );
 
     chart.render();
-  }
-
-  toggleChart() {
-    console.log('oh shes togglin!');
-    document.getElementById("chart").classList.toggle("hidden");
   }
 
   calcStatDiff() {
