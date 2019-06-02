@@ -15,8 +15,7 @@
         <!-- <p>{{ pokemon?.weight ? "weight: " + pokemon.weight + " pounds" : ""}}</p> -->
       </div>
       <div class="statDiffDiv">
-        <p [className]="statDiff > -1 ? 'statDifferences' : 'statDifferencesNegative'" *ngFor="let statDiff of statData.statDifferences">{{
-          pokedex2 &&
+        <p [className]="statDiff > -1 ? 'statDifferences' : 'statDifferencesNegative'" *ngFor="let statDiff of statDiffData">{{
           statDiff}}</p>
       </div>
     </div>

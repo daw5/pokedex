@@ -22,6 +22,7 @@ export class PokemonComponent implements OnInit {
   error: string;
   searchInput: string;
   @Input() public statData;
+  @Input() public statDiffData;
   @Input() public pokedex1: boolean;
   @Input() public pokedex2: boolean;
   @Output() public pokeStats = new EventEmitter();
@@ -51,6 +52,7 @@ export class PokemonComponent implements OnInit {
     var sound = new Howl({
       src: ['/assets/old/' + this.pokemon.id + '.ogg']
     });
+    console.log('statDiffData: ', this.statDiffData)
     sound.play();
   }
 

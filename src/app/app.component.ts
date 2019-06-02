@@ -18,14 +18,16 @@ export class AppComponent {
   public pokedex2 = true;
   public statData = {
     data1: [],
-    data2: [],
-    statDifferences: []
+    data2: []
   }
+
+  public statDiff1 = [];
+  public statDiff2 = [];
   public message = "";
 
-  pusher(diff) {
+  pusher(diff, statDiff) {
     if (!isNaN(diff)) {
-      this.statData.statDifferences.push(diff);
+      statDiff.push(diff);
     }
   }
 
@@ -94,7 +96,9 @@ export class AppComponent {
   calcStatDiff() {
     for (let i = 0; i < this.statData.data2.length; i++) {
       let diff = this.statData.data2[i].base_stat - this.statData.data1[i].base_stat;
-      this.pusher(diff > 0 ? '+' + diff : diff);
+      let diff2 = this.statData.data1[i].base_stat - this.statData.data2[i].base_stat;
+      this.pusher(diff > 0 ? '+' + diff : diff, this.statDiff2);
+      this.pusher(diff2 > 0 ? '+' + diff2 : diff2, this.statDiff1);
     }
     if (this.statData.data1.length > 1 && this.statData.data2.length > 1) {
       this.plot();
@@ -102,7 +106,8 @@ export class AppComponent {
   }
 
   resetStatDiff() {
-    this.statData.statDifferences = [];
+    this.statDiff1 = [];
+    this.statDiff2 = [];
   }
 
   updateData1(data) {
