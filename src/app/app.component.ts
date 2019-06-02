@@ -47,6 +47,11 @@ export class AppComponent {
     return curatedStats;
   }
 
+  public capitalize(s) {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   plot() {
     document.getElementById("chart").innerHTML = "";
     var options = {
@@ -71,10 +76,11 @@ export class AppComponent {
         colors: ['transparent']
       },
       series: [{
-        name: this.pokemonData.pokemon1,
+        name:
+          this.capitalize(this.pokemonData.pokemon1),
         data: this.curateStats(this.statData.data1)
       }, {
-        name: this.pokemonData.pokemon2,
+        name: this.capitalize(this.pokemonData.pokemon2),
         data: this.curateStats(this.statData.data2)
       }],
       xaxis: {

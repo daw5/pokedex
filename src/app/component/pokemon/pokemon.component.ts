@@ -43,16 +43,18 @@ export class PokemonComponent implements OnInit {
     }
   }
 
+  public capitalize(s) {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   fireEvent() {
     this.pokeStats.emit(this.pokemon.stats);
-    console.log('pokemon: ', this.pokemon)
     this.spriteFront = this.pokemon.sprites.front_default;
     this.spriteBack = this.pokemon.sprites.back_default;
-    console.log('sprite front: ', this.spriteFront)
     var sound = new Howl({
       src: ['/assets/old/' + this.pokemon.id + '.ogg']
     });
-    console.log('statDiffData: ', this.statDiffData)
     sound.play();
   }
 
