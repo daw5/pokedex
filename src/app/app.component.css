@@ -1,4 +1,4 @@
-.container {
+.app-container {
     display: flex;
     background-image: linear-gradient(blue, black);
     width: 100%;
@@ -8,6 +8,7 @@
 .pokeball-gif-container {
     width: 40%;
     height: 40%;
+    display: block !important;
 }
 
 .pokeball-gif {
@@ -16,7 +17,7 @@
 }
 
 #chart {
-    top: 50px;
+    top: 40px;
     position: relative;
     width: 100%;
 }
@@ -27,6 +28,7 @@
     position: relative;
     top: -15px;
     background-color: black;
+    border-bottom: 5px solid blue;
 }
 
 .footer {

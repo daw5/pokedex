@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { InteractionService } from './interaction.service';
-import * as ApexCharts from 'apexcharts';
+//@ts-ignore 
+import ApexCharts from 'apexcharts';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -50,6 +51,7 @@ export class AppComponent {
       chart: {
         height: 350,
         type: 'bar',
+        foreColor: 'white'
       },
       plotOptions: {
         bar: {

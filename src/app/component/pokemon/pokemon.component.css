@@ -53,3 +53,7 @@
     float: right;
 }
 
+.sprite-container:hover {
+    cursor: pointer;
+}
+
