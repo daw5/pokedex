@@ -1,12 +1,12 @@
 <div>
   <div class="app-container">
-    <app-pokemon [statDiffData]="statDiff1" (pokemonData)="setPokemonName($event, 1)" (pokeStats)="updateData1($event)"
+    <app-pokemon [cap]="cap" [statDiffData]="statDiff1" (pokemonData)="setPokemonName($event, 1)" (pokeStats)="updateData1($event)"
       [pokedex1]='pokedex1' [statData]='statData' class="firstPokedex pokedex"></app-pokemon>
     <span class="pokeball-gif-container">
       <img id="pokeballGif" class="pokeball-gif" src="https://media.giphy.com/media/klNrnUSZrzZLO/giphy.gif">
       <div class="blocker"></div>
     </span>
-    <app-pokemon [statDiffData]="statDiff2" (pokemonData)="setPokemonName($event, 2)" (pokeStats)="updateData2($event)"
+    <app-pokemon [cap]="cap" [statDiffData]="statDiff2" (pokemonData)="setPokemonName($event, 2)" (pokeStats)="updateData2($event)"
       [pokedex2]='pokedex2' [statData]='statData' class="secondPokedex pokedex"></app-pokemon>
   </div>
   <div class="footer">

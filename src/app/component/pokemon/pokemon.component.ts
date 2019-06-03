@@ -3,6 +3,7 @@ import { InteractionService } from '../../interaction.service';
 import * as Pokedex from 'pokeapi-js-wrapper';
 import { Howl, Howler } from 'howler';
 import { stringify } from '@angular/compiler/src/util';
+import { BlockingProxy } from 'blocking-proxy';
 const P = new Pokedex.Pokedex();
 
 @Component({
@@ -15,6 +16,7 @@ export class PokemonComponent implements OnInit {
   constructor(private _interactionService: InteractionService) { }
 
   pokemon;
+  display: string;
   spriteType = 1;
   spriteFront;
   spriteBack;
@@ -25,6 +27,7 @@ export class PokemonComponent implements OnInit {
   @Input() public statDiffData;
   @Input() public pokedex1: boolean;
   @Input() public pokedex2: boolean;
+  @Input() public cap: any;
   @Output() public pokeStats = new EventEmitter();
   @Output() public pokemonData = new EventEmitter();
 
@@ -43,16 +46,16 @@ export class PokemonComponent implements OnInit {
     }
   }
 
-  public capitalize(s) {
-    if (typeof s !== 'string') return ''
-    return s.charAt(0).toUpperCase() + s.slice(1)
-  }
-
   fireEvent() {
     this.pokeStats.emit(this.pokemon.stats);
     this.spriteFront = this.pokemon.sprites.front_default;
     this.spriteBack = this.pokemon.sprites.back_default;
-    var sound = new Howl({
+    this.display = "none";
+    this.playSound();
+  }
+
+  playSound() {
+    const sound = new Howl({
       src: ['/assets/old/' + this.pokemon.id + '.ogg']
     });
     sound.play();
@@ -86,6 +89,7 @@ export class PokemonComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.display = 'block';
     // this._interactionService.message$.subscribe(
     //   message => {
     //     this.stats = message;

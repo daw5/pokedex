@@ -47,7 +47,7 @@ export class AppComponent {
     return curatedStats;
   }
 
-  public capitalize(s) {
+  public cap(s) {
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
   }
@@ -77,10 +77,10 @@ export class AppComponent {
       },
       series: [{
         name:
-          this.capitalize(this.pokemonData.pokemon1),
+          this.cap(this.pokemonData.pokemon1),
         data: this.curateStats(this.statData.data1)
       }, {
-        name: this.capitalize(this.pokemonData.pokemon2),
+        name: this.cap(this.pokemonData.pokemon2),
         data: this.curateStats(this.statData.data2)
       }],
       xaxis: {

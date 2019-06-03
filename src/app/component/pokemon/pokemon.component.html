@@ -4,13 +4,16 @@
     <div class="pokedex-data">
       <div class="error-container">
         <p class="error">{{error && "Pokemon not found"}}</p>
+        <i [style.display]="display" class="fa fa-arrow-right"></i>
+        <p [style.display]="display" class="search-for">Search for a pokemon</p>
+        <i [style.display]="display" class="fa fa-arrow-left"></i>
       </div>
       <div class="sprite-container" (click)="toggleSprites()">
         <img src={{spriteFront}}>
         <img src={{spriteBack}}>
       </div>
       <div class="statDiv">
-        <p *ngFor="let stat of pokemon?.stats">{{this.capitalize(stat?.stat.name)}}: {{
+        <p *ngFor="let stat of pokemon?.stats">{{this.cap(stat?.stat.name)}}: {{
           stat?.base_stat }}</p>
         <!-- <p>{{ pokemon?.weight ? "weight: " + pokemon.weight + " pounds" : ""}}</p> -->
       </div>
