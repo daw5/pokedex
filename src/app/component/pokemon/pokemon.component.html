@@ -1,5 +1,10 @@
 <div class="pokedex-container">
   <app-search-bar (keydown)="onKeyDown($event)" (keyup)="getPokemon($event)"></app-search-bar>
+  <div id="type-container" class="type-container">
+    <span class="type" [style.background-color]="determineClass(type)" *ngFor="let type of this.pokemon?.types">
+      {{this.cap(type.type.name)}}
+    </span>
+  </div>
   <div class="pokedex-data-container">
     <div class="pokedex-data">
       <div class="error-container">
@@ -15,7 +20,6 @@
       <div class="statDiv">
         <p *ngFor="let stat of pokemon?.stats">{{this.cap(stat?.stat.name)}}: {{
           stat?.base_stat }}</p>
-        <!-- <p>{{ pokemon?.weight ? "weight: " + pokemon.weight + " pounds" : ""}}</p> -->
       </div>
       <div class="statDiffDiv">
         <p [className]="statDiff > -1 ? 'statDifferences' : 'statDifferencesNegative'" *ngFor="let statDiff of statDiffData">{{

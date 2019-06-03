@@ -13,12 +13,28 @@
 
 :host(.pokedex) {
     color: white;
-    margin: auto;
+    margin: 0 auto;
     height: 500px;
     border: 5px solid blue;
     display: flex;
     width: 30%;
     background-image: linear-gradient(red, black)
+}
+
+.type {
+  border: 3px solid white;
+  border-radius: 25px;
+  padding: 0 1em;
+  margin: 0.5em 0.5em;
+  height: 1.5em;
+  background-color: black;
+  position: relative;
+  top: 1em;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.type-container {
+  text-align: center;
 }
 
 .pokedex-container {
@@ -55,6 +71,10 @@
 
 .sprite-container:hover {
     cursor: pointer;
+}
+
+.sprite-container {
+  margin-top: 1em;
 }
 
 .search-for {

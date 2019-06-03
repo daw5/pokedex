@@ -20,7 +20,6 @@ export class AppComponent {
     data1: [],
     data2: []
   }
-
   public statDiff1 = [];
   public statDiff2 = [];
   public message = "";
@@ -100,14 +99,16 @@ export class AppComponent {
   }
 
   calcStatDiff() {
-    for (let i = 0; i < this.statData.data2.length; i++) {
-      let diff = this.statData.data2[i].base_stat - this.statData.data1[i].base_stat;
-      let diff2 = this.statData.data1[i].base_stat - this.statData.data2[i].base_stat;
-      this.pusher(diff > 0 ? '+' + diff : diff, this.statDiff2);
-      this.pusher(diff2 > 0 ? '+' + diff2 : diff2, this.statDiff1);
-    }
     if (this.statData.data1.length > 1 && this.statData.data2.length > 1) {
-      this.plot();
+      for (let i = 0; i < this.statData.data2.length; i++) {
+        let diff = this.statData.data2[i].base_stat - this.statData.data1[i].base_stat;
+        let diff2 = this.statData.data1[i].base_stat - this.statData.data2[i].base_stat;
+        this.pusher(diff > 0 ? '+' + diff : diff, this.statDiff2);
+        this.pusher(diff2 > 0 ? '+' + diff2 : diff2, this.statDiff1);
+      }
+      if (this.statData.data1.length > 1 && this.statData.data2.length > 1) {
+        this.plot();
+      }
     }
   }
 

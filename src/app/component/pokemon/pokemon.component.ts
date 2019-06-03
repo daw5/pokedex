@@ -37,11 +37,12 @@ export class PokemonComponent implements OnInit {
       let pokemon = this.search.toLowerCase();
       this.error = "";
       this.pokemonData.emit(pokemon);
-      this.pokemon = await P.getPokemonByName(pokemon);
+      this.pokemon = await P.resource("https://pokeapi.co/api/v2/pokemon/" + pokemon);
       return this.pokemon;
     }
 
     catch (err) {
+      this.pokemon.types = [];
       this.error = err.message;
     }
   }
@@ -73,14 +74,14 @@ export class PokemonComponent implements OnInit {
   }
 
   onKeyDown(event) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && event.target.value != "") {
       this.display = "none";
       this.confirmPokemon().then((pokemon) => {
         if (pokemon) {
+          event.target.value = '';
           this.fireEvent()
         }
       })
-      event.target.value = '';
     }
   }
 
@@ -95,5 +96,47 @@ export class PokemonComponent implements OnInit {
     //     this.stats = message;
     //   }
     // );
+  }
+
+
+  determineClass(type) {
+    switch (type.type.name) {
+      case "normal":
+        return "#bbbab0";
+      case "poison":
+        return "#9d619c";
+      case "psychic":
+        return "#e970b2";
+      case "grass":
+        return "#9dd565"
+      case "ground":
+        return "#e5c969"
+      case "ice":
+        return "#abeffd"
+      case "fire":
+        return "#e8624d"
+      case "rock":
+        return "#cbbd7c"
+      case "dragon":
+        return "#867af7";
+      case "water":
+        return "#6cadf8"
+      case "bug":
+        return "#c6d04a"
+      case "dark":
+        return "#886a59"
+      case "fighting":
+        return "#9d5a4a"
+      case "ghost":
+        return "#7877d1"
+      case "steel":
+        return "#c4c2d9";
+      case "flying":
+        return "#80a1f8";
+      case "electric":
+        return "#f9e35d";
+      case "fairy":
+        return "#eeb2fa";
+    }
   }
 }
