@@ -50,7 +50,6 @@ export class PokemonComponent implements OnInit {
     this.pokeStats.emit(this.pokemon.stats);
     this.spriteFront = this.pokemon.sprites.front_default;
     this.spriteBack = this.pokemon.sprites.back_default;
-    this.display = "none";
     this.playSound();
   }
 
@@ -75,6 +74,7 @@ export class PokemonComponent implements OnInit {
 
   onKeyDown(event) {
     if (event.key === 'Enter') {
+      this.display = "none";
       this.confirmPokemon().then((pokemon) => {
         if (pokemon) {
           this.fireEvent()
