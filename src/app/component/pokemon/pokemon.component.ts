@@ -42,8 +42,10 @@ export class PokemonComponent implements OnInit {
     }
 
     catch (err) {
-      this.pokemon.types = [];
       this.error = err.message;
+      if (this.pokemon != null) {
+        this.pokemon.types = [];
+      }
     }
   }
 
