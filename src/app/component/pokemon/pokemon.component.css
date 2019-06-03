@@ -61,10 +61,6 @@
     color: white;
 }
 
-.intro {
-    display: none;
-}
-
 @-webkit-keyframes bounceLeft {
     0%,
     20%,
