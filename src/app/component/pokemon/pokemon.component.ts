@@ -89,11 +89,6 @@ export class PokemonComponent implements OnInit {
 
   async ngOnInit() {
     this.display = 'block';
-    // this._interactionService.message$.subscribe(
-    //   message => {
-    //     this.stats = message;
-    //   }
-    // );
   }
 
 
