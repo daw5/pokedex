@@ -1,9 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { InteractionService } from '../../interaction.service';
 import * as Pokedex from 'pokeapi-js-wrapper';
 import { Howl, Howler } from 'howler';
-import { stringify } from '@angular/compiler/src/util';
-import { BlockingProxy } from 'blocking-proxy';
 const P = new Pokedex.Pokedex();
 
 @Component({
@@ -13,8 +10,6 @@ const P = new Pokedex.Pokedex();
 })
 export class PokemonComponent implements OnInit {
 
-  constructor(private _interactionService: InteractionService) { }
-
   pokemon;
   display: string;
   spriteType = 1;
@@ -23,6 +18,7 @@ export class PokemonComponent implements OnInit {
   search: string;
   error: string;
   searchInput: string;
+  
   @Input() public statData;
   @Input() public statDiffData;
   @Input() public pokedex1: boolean;

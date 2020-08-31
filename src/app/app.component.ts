@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { InteractionService } from './interaction.service';
 //@ts-ignore 
 import ApexCharts from 'apexcharts';
 @Component({
@@ -128,8 +127,4 @@ export class AppComponent {
     this.statData.data2 = data;
     this.calcStatDiff();
   }
-
-
-  constructor(private _interactionService: InteractionService) { }
-  //   this._interactionService.sendMessage();
 }
