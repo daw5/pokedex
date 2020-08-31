@@ -14,9 +14,10 @@
 :host(.pokedex) {
     color: white;
     margin: 0 auto;
-    height: 500px;
+    height: 420px;
     border: 5px solid blue;
     display: flex;
+    max-width: 220px;
     width: 30%;
     background-image: linear-gradient(red, black)
 }

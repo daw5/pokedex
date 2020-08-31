@@ -54,7 +54,7 @@ export class AppComponent {
     document.getElementById("chart").innerHTML = "";
     var options = {
       chart: {
-        height: 350,
+        height: 280,
         type: 'bar',
         foreColor: 'white'
       },
