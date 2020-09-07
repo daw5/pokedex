@@ -12,14 +12,11 @@ export class PokemonComponent implements OnInit {
 
   pokemon;
   display: string;
-  spriteType = 1;
-  spriteFront;
-  spriteBack;
-  search: string;
+  spriteType: Number = 1;
+  spriteFront: string;
+  spriteBack: string;
   error: string;
-  searchInput: string;
   
-  @Input() public statData;
   @Input() public statDiffData;
   @Input() public pokedex1: boolean;
   @Input() public pokedex2: boolean;
@@ -28,9 +25,8 @@ export class PokemonComponent implements OnInit {
   @Output() public pokemonData = new EventEmitter();
 
 
-  async confirmPokemon() {
+  async getPokemon(pokemon) {
     try {
-      let pokemon = this.search.toLowerCase();
       this.error = "";
       this.pokemonData.emit(pokemon);
       this.pokemon = await P.resource("https://pokeapi.co/api/v2/pokemon/" + pokemon);
@@ -45,7 +41,7 @@ export class PokemonComponent implements OnInit {
     }
   }
 
-  fireEvent() {
+  displayInfo() {
     this.pokeStats.emit(this.pokemon.stats);
     this.spriteFront = this.pokemon.sprites.front_default;
     this.spriteBack = this.pokemon.sprites.back_default;
@@ -71,20 +67,16 @@ export class PokemonComponent implements OnInit {
     }
   }
 
-  onKeyDown(event) {
+  handlePokemonSelect(event) {
     if (event.key === 'Enter' && event.target.value != "") {
       this.display = "none";
-      this.confirmPokemon().then((pokemon) => {
+      this.getPokemon(event.target.value).then((pokemon) => {
         if (pokemon) {
           event.target.value = '';
-          this.fireEvent()
+          this.displayInfo()
         }
       })
     }
-  }
-
-  getPokemon(pokemon) {
-    this.search = pokemon.target.value;
   }
 
   async ngOnInit() {

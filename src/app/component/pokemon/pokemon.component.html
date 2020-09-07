@@ -1,5 +1,5 @@
 <div class="pokedex-container">
-  <app-search-bar (keydown)="onKeyDown($event)" (keyup)="getPokemon($event)"></app-search-bar>
+  <app-search-bar (keydown)="handlePokemonSelect($event)"></app-search-bar>
   <div id="type-container" class="type-container">
     <span class="type" [style.background-color]="determineClass(type)" *ngFor="let type of this.pokemon?.types">
       {{this.cap(type.type.name)}}
