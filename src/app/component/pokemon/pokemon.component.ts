@@ -79,11 +79,6 @@ export class PokemonComponent {
     }
   }
 
-  // async ngOnInit() {
-  //   this.display = 'block';
-  // }
-
-
   determineClass(type) {
     switch (type.type.name) {
       case "normal":
