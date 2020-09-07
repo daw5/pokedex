@@ -16,8 +16,8 @@ export class AppComponent {
   public pokedex1 = true;
   public pokedex2 = true;
   public statData = {
-    data1: [],
-    data2: []
+    pokedex1: [],
+    pokedex2: []
   }
   public statDiff1 = [];
   public statDiff2 = [];
@@ -76,10 +76,10 @@ export class AppComponent {
       series: [{
         name:
           this.cap(this.pokemonData.pokemon1),
-        data: this.curateStats(this.statData.data1)
+        data: this.curateStats(this.statData.pokedex1)
       }, {
         name: this.cap(this.pokemonData.pokemon2),
-        data: this.curateStats(this.statData.data2)
+        data: this.curateStats(this.statData.pokedex2)
       }],
       xaxis: {
         categories: ['Speed', 'Special Defense', 'Special Attack', 'Defense', 'Special Defense', 'HP'],
@@ -98,14 +98,14 @@ export class AppComponent {
   }
 
   calcStatDiff() {
-    if (this.statData.data1.length > 1 && this.statData.data2.length > 1) {
-      for (let i = 0; i < this.statData.data2.length; i++) {
-        let diff = this.statData.data2[i].base_stat - this.statData.data1[i].base_stat;
-        let diff2 = this.statData.data1[i].base_stat - this.statData.data2[i].base_stat;
+    if (this.statData.pokedex1.length > 1 && this.statData.pokedex2.length > 1) {
+      for (let i = 0; i < this.statData.pokedex2.length; i++) {
+        let diff = this.statData.pokedex2[i].base_stat - this.statData.pokedex1[i].base_stat;
+        let diff2 = this.statData.pokedex1[i].base_stat - this.statData.pokedex2[i].base_stat;
         this.pusher(diff > 0 ? '+' + diff : diff, this.statDiff2);
         this.pusher(diff2 > 0 ? '+' + diff2 : diff2, this.statDiff1);
       }
-      if (this.statData.data1.length > 1 && this.statData.data2.length > 1) {
+      if (this.statData.pokedex1.length > 1 && this.statData.pokedex2.length > 1) {
         this.plot();
       }
     }
@@ -116,15 +116,9 @@ export class AppComponent {
     this.statDiff2 = [];
   }
 
-  updateData1(data) {
+  updateStatData(pokedex: string, data) {
     this.resetStatDiff();
-    this.statData.data1 = data;
-    this.calcStatDiff();
-  }
-
-  updateData2(data) {
-    this.resetStatDiff();
-    this.statData.data2 = data;
+    this.statData[pokedex] = data;
     this.calcStatDiff();
   }
 }
