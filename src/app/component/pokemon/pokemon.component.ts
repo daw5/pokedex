@@ -8,10 +8,10 @@ const P = new Pokedex.Pokedex();
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.css']
 })
-export class PokemonComponent implements OnInit {
+export class PokemonComponent {
 
   pokemon;
-  display: string;
+  display: string = 'block';
   spriteType: Number = 1;
   spriteFront: string;
   spriteBack: string;
@@ -79,9 +79,9 @@ export class PokemonComponent implements OnInit {
     }
   }
 
-  async ngOnInit() {
-    this.display = 'block';
-  }
+  // async ngOnInit() {
+  //   this.display = 'block';
+  // }
 
 
   determineClass(type) {
