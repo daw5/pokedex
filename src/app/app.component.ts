@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 //@ts-ignore 
 import ApexCharts from 'apexcharts';
+import * as Pokedex from 'pokeapi-js-wrapper';
+
+const P = new Pokedex.Pokedex();
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit {
 
   title = 'pokedex-project';
   public pokemonData = {
@@ -19,6 +24,7 @@ export class AppComponent {
     pokedex1: [],
     pokedex2: []
   }
+  public pokemonList;
   public statDiff1 = [];
   public statDiff2 = [];
   public message = "";
@@ -120,5 +126,25 @@ export class AppComponent {
     this.resetStatDiff();
     this.statData[pokedex] = data;
     this.calcStatDiff();
+  }
+
+  async fetchPokemonList() {
+    try {
+      return await P.getPokemonsList();
+    }
+
+    catch (err) {
+      alert("Pokemon api not responding");
+    }
+  }
+
+  public getPokemonList() {
+    return this.pokemonList;
+  }
+
+  ngOnInit() {
+    this.fetchPokemonList().then((pokemonList) => {
+      this.pokemonList = pokemonList.results;
+    });
   }
 }

@@ -1,5 +1,26 @@
 <div class="pokedex-container">
-  <app-search-bar (keydown)="handlePokemonSelect($event)"></app-search-bar>
+  <!-- <app-search-bar (keydown)="handlePokemonSelect($event)"></app-search-bar> -->
+    <div class="ng-autocomplete">
+      <ng-autocomplete 
+        class="search-bar"
+        name="searchInput"
+        [data]="pokemonList"
+        [searchKeyword]="keyword"
+        (selected)='handlePokemonSelect($event)'
+        (inputFocused)='onFocused($event)'
+        [itemTemplate]="itemTemplate"
+        [notFoundTemplate]="notFoundTemplate"> 
+        >                                 
+      </ng-autocomplete>
+       
+      <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.name"></a>
+      </ng-template>
+       
+      <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+      </ng-template>
+    </div>
   <div id="type-container" class="type-container">
     <span class="type" [style.background-color]="determineClass(type)" *ngFor="let type of this.pokemon?.types">
       {{this.cap(type.type.name)}}

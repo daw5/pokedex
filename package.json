@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
+    "angular-ng-autocomplete": "^2.0.1",
     "apexcharts": "^3.7.0",
     "howler": "^2.1.2",
     "pokeapi-js-wrapper": "^1.1.1",

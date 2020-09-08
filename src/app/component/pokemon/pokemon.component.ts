@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import * as Pokedex from 'pokeapi-js-wrapper';
 import { Howl, Howler } from 'howler';
+import * as Pokedex from 'pokeapi-js-wrapper';
 const P = new Pokedex.Pokedex();
 
 @Component({
@@ -8,7 +8,7 @@ const P = new Pokedex.Pokedex();
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.css']
 })
-export class PokemonComponent {
+export class PokemonComponent implements OnInit {
 
   pokemon;
   display: string = 'block';
@@ -17,6 +17,7 @@ export class PokemonComponent {
   spriteBack: string;
   error: string;
   
+  @Input() public pokemonList;
   @Input() public statDiffData;
   @Input() public pokedex1: boolean;
   @Input() public pokedex2: boolean;
@@ -24,6 +25,10 @@ export class PokemonComponent {
   @Output() public pokeStats = new EventEmitter();
   @Output() public pokemonData = new EventEmitter();
 
+  ngOnInit() {
+    console.log("pokemonlist ", this.pokemonList);
+    console.log("dataL ", this.data);
+  }
 
   async getPokemon(pokemon) {
     try {
@@ -68,15 +73,15 @@ export class PokemonComponent {
   }
 
   handlePokemonSelect(event) {
-    if (event.key === 'Enter' && event.target.value != "") {
+    // if (event.target.value != "") {
       this.display = "none";
-      this.getPokemon(event.target.value).then((pokemon) => {
+      this.getPokemon(event.name).then((pokemon) => {
         if (pokemon) {
-          event.target.value = '';
+          // event.target.value = '';
           this.displayInfo()
         }
       })
-    }
+    // }
   }
 
   determineClass(type) {
@@ -118,5 +123,32 @@ export class PokemonComponent {
       case "fairy":
         return "#eeb2fa";
     }
+  }
+
+  keyword = 'name';
+  data = [
+     {
+       id: 1,
+       name: 'Usa'
+     },
+     {
+       id: 2,
+       name: 'England'
+     }
+  ];
+ 
+ 
+  selectEvent(item) {
+    // do something with selected item
+    console.log("event: ", item);
+  }
+ 
+  onChangeSearch(val: string) {
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+  
+  onFocused(e){
+    // do something when input is focused
   }
 }

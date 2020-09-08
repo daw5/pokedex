@@ -3,6 +3,21 @@
     margin: 10px auto;
 }
 
+.ng-autocomplete {
+  width: 70%;
+  margin: auto;
+}
+
+::ng-deep input {
+  border-radius: 10px;
+  height: 20px !important;
+  margin-top: 16px !important;
+}
+
+::ng-deep .autocomplete-container {
+  box-shadow: none !important;
+}
+
 :host(.firstPokedex) {
     float: left;
 }
