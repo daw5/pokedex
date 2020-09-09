@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Howl, Howler } from 'howler';
 import * as Pokedex from 'pokeapi-js-wrapper';
 const P = new Pokedex.Pokedex();
@@ -16,7 +16,8 @@ export class PokemonComponent implements OnInit {
   spriteFront: string;
   spriteBack: string;
   error: string;
-  
+  dropdownData: string[];
+
   @Input() public pokemonList;
   @Input() public statDiffData;
   @Input() public pokedex1: boolean;
@@ -26,8 +27,27 @@ export class PokemonComponent implements OnInit {
   @Output() public pokemonData = new EventEmitter();
 
   ngOnInit() {
-    console.log("pokemonlist ", this.pokemonList);
-    console.log("dataL ", this.data);
+
+  }
+
+  inputChanged(event) {
+    if (event.length > 0) {
+      this.dropdownData = this.pokemonList;
+    } else {
+      this.dropdownData = [];
+    }
+  }
+
+  handlePokemonSelect(event) {
+    // if (event.target.value != "") {
+      this.display = "none";
+      this.getPokemon(event.name).then((pokemon) => {
+        if (pokemon) {
+          // event.target.value = '';
+          this.displayInfo()
+        }
+      })
+    // }
   }
 
   async getPokemon(pokemon) {
@@ -70,18 +90,6 @@ export class PokemonComponent implements OnInit {
       this.spriteFront = this.pokemon.sprites.front_shiny;
       this.spriteBack = this.pokemon.sprites.back_shiny;
     }
-  }
-
-  handlePokemonSelect(event) {
-    // if (event.target.value != "") {
-      this.display = "none";
-      this.getPokemon(event.name).then((pokemon) => {
-        if (pokemon) {
-          // event.target.value = '';
-          this.displayInfo()
-        }
-      })
-    // }
   }
 
   determineClass(type) {
@@ -136,19 +144,4 @@ export class PokemonComponent implements OnInit {
        name: 'England'
      }
   ];
- 
- 
-  selectEvent(item) {
-    // do something with selected item
-    console.log("event: ", item);
-  }
- 
-  onChangeSearch(val: string) {
-    // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.
-  }
-  
-  onFocused(e){
-    // do something when input is focused
-  }
 }
