@@ -8,6 +8,12 @@
   margin: auto;
 }
 
+::ng-deep .autocomplete-container .input-container .x i {
+  /* margin-top: 11px;
+  font-size: inherit !important; */
+  display: none;
+}
+
 ::ng-deep input {
   height: 20px !important;
   margin-top: 16px !important;
@@ -148,8 +154,8 @@
     }
   }
   /* /left bounce */
-  
-  
+
+
   /* right bounce */
   @-webkit-keyframes bounceRight {
     0%,
@@ -203,8 +209,8 @@
     }
   }
   /* /right bounce */
-  
-  
+
+
   /* assign bounce */
   .fa-arrow-right {
     -webkit-animation: bounceRight 2s infinite;
@@ -213,7 +219,7 @@
     top: -1.4em;
     position: relative;
   }
-  
+
   .fa-arrow-left {
     -webkit-animation: bounceLeft 2s infinite;
     animation: bounceLeft 2s infinite;

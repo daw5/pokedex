@@ -9,6 +9,7 @@
         [searchKeyword]="keyword"
         (selected)='handlePokemonSelect($event)'
         (inputChanged)="inputChanged($event)"
+        (closed)="closeDropdown()"
         [minQueryLength]="1"
         [itemTemplate]="itemTemplate"
         >

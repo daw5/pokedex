@@ -34,8 +34,12 @@ export class PokemonComponent implements OnInit {
     if (event.length > 0) {
       this.dropdownData = this.pokemonList;
     } else {
-      this.dropdownData = [];
+      this.closeDropdown();
     }
+  }
+
+  closeDropdown() {
+    this.dropdownData = [];
   }
 
   handlePokemonSelect(event) {
