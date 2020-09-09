@@ -10,6 +10,8 @@ const P = new Pokedex.Pokedex();
 })
 export class PokemonComponent implements OnInit {
 
+  @ViewChild('auto', {static: false}) auto;
+
   pokemon;
   display: string = 'block';
   spriteType: Number = 1;
@@ -40,6 +42,7 @@ export class PokemonComponent implements OnInit {
 
   closeDropdown() {
     this.dropdownData = [];
+    this.auto.clear();
   }
 
   handlePokemonSelect(event) {

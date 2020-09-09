@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//@ts-ignore 
+//@ts-ignore
 import ApexCharts from 'apexcharts';
 import * as Pokedex from 'pokeapi-js-wrapper';
 
@@ -130,7 +130,7 @@ export class AppComponent implements OnInit {
 
   async fetchPokemonList() {
     try {
-      return await P.getPokemonsList();
+      return await P.getPokemonsList({limit: 809});
     }
 
     catch (err) {

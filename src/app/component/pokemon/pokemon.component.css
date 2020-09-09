@@ -8,6 +8,10 @@
   margin: auto;
 }
 
+.dropdown {
+  z-index: 2;
+}
+
 ::ng-deep .autocomplete-container .input-container .x i {
   /* margin-top: 11px;
   font-size: inherit !important; */
@@ -34,7 +38,7 @@
 :host(.pokedex) {
     color: white;
     margin: 0 auto;
-    height: 420px;
+    min-height: 420px;
     border: 5px solid blue;
     display: flex;
     max-width: 220px;
