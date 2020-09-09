@@ -9,7 +9,6 @@
 }
 
 ::ng-deep input {
-  border-radius: 10px;
   height: 20px !important;
   margin-top: 16px !important;
 }
