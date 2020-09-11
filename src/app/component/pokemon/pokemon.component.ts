@@ -19,6 +19,7 @@ export class PokemonComponent implements OnInit {
   spriteBack: string;
   error: string;
   dropdownData: string[];
+  searchInput: string;
 
   @Input() public pokemonList;
   @Input() public statDiffData;
@@ -33,6 +34,11 @@ export class PokemonComponent implements OnInit {
   }
 
   inputChanged(event) {
+    this.searchInput = event;
+    this.toggleDropdown(event);
+  }
+
+  toggleDropdown(event) {
     if (event.length > 0) {
       this.dropdownData = this.pokemonList;
     } else {
@@ -46,18 +52,16 @@ export class PokemonComponent implements OnInit {
   }
 
   handlePokemonSelect(event) {
-    // if (event.target.value != "") {
-      this.display = "none";
-      this.getPokemon(event.name).then((pokemon) => {
-        if (pokemon) {
-          // event.target.value = '';
-          this.displayInfo()
-        }
-      })
-    // }
+    this.getPokemon(event.name);
+    this.closeDropdown();
   }
 
-  async getPokemon(pokemon) {
+  handlePokemonEntered() {
+    this.getPokemon(this.searchInput);
+    this.closeDropdown();
+  }
+
+  async attemptFetchPokemon(pokemon) {
     try {
       this.error = "";
       this.pokemonData.emit(pokemon);
@@ -67,17 +71,28 @@ export class PokemonComponent implements OnInit {
 
     catch (err) {
       this.error = err.message;
-      if (this.pokemon != null) {
-        this.pokemon.types = [];
-      }
     }
   }
 
-  displayInfo() {
-    this.pokeStats.emit(this.pokemon.stats);
-    this.spriteFront = this.pokemon.sprites.front_default;
-    this.spriteBack = this.pokemon.sprites.back_default;
-    this.playSound();
+  pokemonExists(searchInput) {
+    return this.pokemonList.filter(pokemon => pokemon.name === searchInput).length > 0;
+  }
+
+  getPokemon(input) {
+    if (this.pokemonExists(input)) {
+      this.display = "none";
+      this.attemptFetchPokemon(this.searchInput).then((pokemon) => {
+        if (pokemon) {
+          this.pokeStats.emit(this.pokemon.stats);
+          this.spriteFront = this.pokemon.sprites.front_default;
+          this.spriteBack = this.pokemon.sprites.back_default;
+          this.playSound();
+        }
+      })
+    } else {
+      this.pokemon.types = [];
+      this.error = "Pokemon does not exist";
+    }
   }
 
   playSound() {
