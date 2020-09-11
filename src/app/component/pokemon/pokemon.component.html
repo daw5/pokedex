@@ -6,7 +6,7 @@
         class="search-bar"
         name="searchInput"
         [data]="dropdownData"
-        [searchKeyword]="keyword"
+        [searchKeyword]="'name'"
         (keyup.enter)="handlePokemonEntered()"
         (selected)='handlePokemonSelect($event)'
         (inputChanged)="inputChanged($event)"
@@ -17,7 +17,7 @@
       </ng-autocomplete>
 
       <ng-template class="dropdown" #itemTemplate let-item>
-      <a [innerHTML]="item.name"></a>
+        <a class="dropdown-item" [innerHTML]="item.name"></a>
       </ng-template>
 
     </div>

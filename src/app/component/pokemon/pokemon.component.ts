@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ViewChildren, ElementRef, QueryList} from '@angular/core';
 import { Howl, Howler } from 'howler';
 import * as Pokedex from 'pokeapi-js-wrapper';
 const P = new Pokedex.Pokedex();
@@ -11,8 +11,10 @@ const P = new Pokedex.Pokedex();
 export class PokemonComponent implements OnInit {
 
   @ViewChild('auto', {static: false}) auto;
+  @ViewChildren('itemTemplate', {read: ElementRef}) itemTemplate: QueryList<ElementRef>;
 
   pokemon;
+  firstResult: string;
   display: string = 'block';
   spriteType: Number = 1;
   spriteFront: string;
@@ -30,7 +32,21 @@ export class PokemonComponent implements OnInit {
   @Output() public pokemonData = new EventEmitter();
 
   ngOnInit() {
+  }
 
+  ngAfterViewInit() {
+    this.watchForDropdownChanges();
+  }
+
+  watchForDropdownChanges() {
+    this.itemTemplate.changes.subscribe((next: QueryList<ElementRef>) => {
+        let items = document.querySelectorAll(".dropdown-item");
+
+        if (items.length > 0) {
+          this.firstResult = items[0].textContent;
+        }
+      }
+    );
   }
 
   inputChanged(event) {
@@ -57,7 +73,7 @@ export class PokemonComponent implements OnInit {
   }
 
   handlePokemonEntered() {
-    this.getPokemon(this.searchInput);
+    this.getPokemon(this.firstResult);
     this.closeDropdown();
   }
 
@@ -79,19 +95,28 @@ export class PokemonComponent implements OnInit {
   }
 
   getPokemon(input) {
+    this.clearDisplay();
     if (this.pokemonExists(input)) {
-      this.display = "none";
-      this.attemptFetchPokemon(this.searchInput).then((pokemon) => {
-        if (pokemon) {
-          this.pokeStats.emit(this.pokemon.stats);
-          this.spriteFront = this.pokemon.sprites.front_default;
-          this.spriteBack = this.pokemon.sprites.back_default;
-          this.playSound();
-        }
-      })
+      this.attemptFetchPokemon(input).then((pokemon) => this.displayInfo(pokemon));
     } else {
-      this.pokemon.types = [];
       this.error = "Pokemon does not exist";
+    }
+  }
+
+  displayInfo(pokemon) {
+    if (pokemon) {
+      this.pokeStats.emit(this.pokemon.stats);
+      this.spriteFront = this.pokemon.sprites.front_default;
+      this.spriteBack = this.pokemon.sprites.back_default;
+      this.playSound();
+    }
+  }
+
+  clearDisplay() {
+    this.display = "none";
+
+    if (this.pokemon != null) {
+      this.pokemon.types = [];
     }
   }
 
@@ -154,16 +179,4 @@ export class PokemonComponent implements OnInit {
         return "#eeb2fa";
     }
   }
-
-  keyword = 'name';
-  data = [
-     {
-       id: 1,
-       name: 'Usa'
-     },
-     {
-       id: 2,
-       name: 'England'
-     }
-  ];
 }
