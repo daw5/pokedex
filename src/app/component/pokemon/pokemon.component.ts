@@ -44,6 +44,8 @@ export class PokemonComponent implements OnInit {
 
         if (items.length > 0) {
           this.firstResult = items[0].textContent;
+        } else {
+          this.firstResult = "";
         }
       }
     );
@@ -58,7 +60,7 @@ export class PokemonComponent implements OnInit {
     if (event.length > 0) {
       this.dropdownData = this.pokemonList;
     } else {
-      this.closeDropdown();
+      this.dropdownData = [];
     }
   }
 
@@ -73,7 +75,7 @@ export class PokemonComponent implements OnInit {
   }
 
   handlePokemonEntered() {
-    this.getPokemon(this.firstResult);
+    this.getPokemon(this.firstResult || this.searchInput);
     this.closeDropdown();
   }
 
