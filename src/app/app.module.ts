@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PokemonComponent } from './component/pokemon/pokemon.component';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
   ],
   imports: [
     BrowserModule,
-    AutocompleteLibModule
+    NgSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

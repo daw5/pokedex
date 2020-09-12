@@ -10,8 +10,7 @@ const P = new Pokedex.Pokedex();
 })
 export class PokemonComponent implements OnInit {
 
-  @ViewChild('auto', {static: false}) auto;
-  @ViewChildren('itemTemplate', {read: ElementRef}) itemTemplate: QueryList<ElementRef>;
+  @ViewChild('select') select;
 
   pokemon;
   firstResult: string;
@@ -20,8 +19,8 @@ export class PokemonComponent implements OnInit {
   spriteFront: string;
   spriteBack: string;
   error: string;
-  dropdownData: string[];
-  searchInput: string;
+  searchInput: string = "";
+  isOpen = false;
 
   @Input() public pokemonList;
   @Input() public statDiffData;
@@ -32,51 +31,24 @@ export class PokemonComponent implements OnInit {
   @Output() public pokemonData = new EventEmitter();
 
   ngOnInit() {
-  }
 
-  ngAfterViewInit() {
-    this.watchForDropdownChanges();
-  }
-
-  watchForDropdownChanges() {
-    this.itemTemplate.changes.subscribe((next: QueryList<ElementRef>) => {
-        let items = document.querySelectorAll(".dropdown-item");
-
-        if (items.length > 0) {
-          this.firstResult = items[0].textContent;
-        } else {
-          this.firstResult = "";
-        }
-      }
-    );
-  }
-
-  inputChanged(event) {
-    this.searchInput = event;
-    this.toggleDropdown(event);
   }
 
   toggleDropdown(event) {
-    if (event.length > 0) {
-      this.dropdownData = this.pokemonList;
+    if (event.term.length > 0) {
+      this.isOpen = true;
     } else {
-      this.dropdownData = [];
+      this.isOpen = false;
     }
   }
 
-  closeDropdown() {
-    this.dropdownData = [];
-    this.auto.clear();
+  onInputChange(event) {
+    this.toggleDropdown(event);
   }
 
   handlePokemonSelect(event) {
     this.getPokemon(event.name);
-    this.closeDropdown();
-  }
-
-  handlePokemonEntered() {
-    this.getPokemon(this.firstResult || this.searchInput);
-    this.closeDropdown();
+    this.isOpen = false;
   }
 
   async attemptFetchPokemon(pokemon) {
