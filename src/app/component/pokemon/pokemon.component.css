@@ -7,6 +7,10 @@
   top: 9px;
 }
 
+::ng-deep .ng-select.ng-select-single .ng-select-container {
+  min-width: 168.28px;
+}
+
 :host(.firstPokedex) {
     float: left;
 }
@@ -96,12 +100,12 @@
       transform: translateX(0);
     }
     40% {
-      -webkit-transform: translateX(17px);
-      transform: translateX(17px);
+      -webkit-transform: translateX(10px);
+      transform: translateX(10px);
     }
     60% {
-      -webkit-transform: translateX(15px);
-      transform: translateX(15px);
+      -webkit-transform: translateX(8px);
+      transform: translateX(8px);
     }
   }
   @-moz-keyframes bounceLeft {
@@ -113,10 +117,10 @@
       transform: translateX(0);
     }
     40% {
-      transform: translateX(17px);
+      transform: translateX(10px);
     }
     60% {
-      transform: translateX(15px);
+      transform: translateX(8px);
     }
   }
   @keyframes bounceLeft {
@@ -129,12 +133,12 @@
       transform: translateX(0);
     }
     40% {
-      -ms-transform: translateX(17px);
-      transform: translateX(17px);
+      -ms-transform: translateX(10px);
+      transform: translateX(10px);
     }
     60% {
-      -ms-transform: translateX(15px);
-      transform: translateX(15px);
+      -ms-transform: translateX(8px);
+      transform: translateX(8px);
     }
   }
   /* /left bounce */
@@ -151,12 +155,12 @@
       transform: translateX(0);
     }
     40% {
-      -webkit-transform: translateX(-17px);
-      transform: translateX(-17px);
+      -webkit-transform: translateX(-10px);
+      transform: translateX(-10px);
     }
     60% {
-      -webkit-transform: translateX(-15px);
-      transform: translateX(-15px);
+      -webkit-transform: translateX(-8px);
+      transform: translateX(-8px);
     }
   }
   @-moz-keyframes bounceRight {
@@ -168,10 +172,10 @@
       transform: translateX(0);
     }
     40% {
-      transform: translateX(-17px);
+      transform: translateX(-10px);
     }
     60% {
-      transform: translateX(-15px);
+      transform: translateX(-8px);
     }
   }
   @keyframes bounceRight {
@@ -184,12 +188,12 @@
       transform: translateX(0);
     }
     40% {
-      -ms-transform: translateX(-17px);
-      transform: translateX(-17px);
+      -ms-transform: translateX(-10px);
+      transform: translateX(-10px);
     }
     60% {
-      -ms-transform: translateX(-15px);
-      transform: translateX(-15px);
+      -ms-transform: translateX(-8px);
+      transform: translateX(-8px);
     }
   }
   /* /right bounce */
@@ -197,8 +201,8 @@
 
   /* assign bounce */
   .fa-arrow-right {
-    -webkit-animation: bounceRight 2s infinite;
-    animation: bounceRight 2s infinite;
+    -webkit-animation: bounceRight 1.5s infinite;
+    animation: bounceRight 1.5s infinite;
     float:right;
     top: -26px;
     position: relative;
@@ -206,8 +210,8 @@
   }
 
   .fa-arrow-left {
-    -webkit-animation: bounceLeft 2s infinite;
-    animation: bounceLeft 2s infinite;
+    -webkit-animation: bounceLeft 1.5s infinite;
+    animation: bounceLeft 1.5s infinite;
     top: -26px;
     position: relative;
     left: 15px;

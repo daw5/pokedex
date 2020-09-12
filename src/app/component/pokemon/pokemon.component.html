@@ -8,7 +8,8 @@
           (search)="onInputChange($event)"
           [isOpen]="isOpen"
           (change)="handlePokemonSelect($event)"
-          [clearSearchOnAdd]="true"
+          [clearable]="false"
+          notFoundText="Pokemon not found"
     >
     </ng-select>
 
