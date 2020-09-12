@@ -3,28 +3,8 @@
     margin: 10px auto;
 }
 
-.ng-autocomplete {
-  width: 70%;
-  margin: auto;
-}
-
-.dropdown {
-  z-index: 2;
-}
-
-::ng-deep .autocomplete-container .input-container .x i {
-  /* margin-top: 11px;
-  font-size: inherit !important; */
-  display: none;
-}
-
-::ng-deep input {
-  height: 20px !important;
-  margin-top: 16px !important;
-}
-
-::ng-deep .autocomplete-container {
-  box-shadow: none !important;
+::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+  top: 9px;
 }
 
 :host(.firstPokedex) {
@@ -116,8 +96,8 @@
       transform: translateX(0);
     }
     40% {
-      -webkit-transform: translateX(30px);
-      transform: translateX(30px);
+      -webkit-transform: translateX(17px);
+      transform: translateX(17px);
     }
     60% {
       -webkit-transform: translateX(15px);
@@ -133,7 +113,7 @@
       transform: translateX(0);
     }
     40% {
-      transform: translateX(30px);
+      transform: translateX(17px);
     }
     60% {
       transform: translateX(15px);
@@ -149,8 +129,8 @@
       transform: translateX(0);
     }
     40% {
-      -ms-transform: translateX(30px);
-      transform: translateX(30px);
+      -ms-transform: translateX(17px);
+      transform: translateX(17px);
     }
     60% {
       -ms-transform: translateX(15px);
@@ -171,8 +151,8 @@
       transform: translateX(0);
     }
     40% {
-      -webkit-transform: translateX(-30px);
-      transform: translateX(-30px);
+      -webkit-transform: translateX(-17px);
+      transform: translateX(-17px);
     }
     60% {
       -webkit-transform: translateX(-15px);
@@ -188,7 +168,7 @@
       transform: translateX(0);
     }
     40% {
-      transform: translateX(-30px);
+      transform: translateX(-17px);
     }
     60% {
       transform: translateX(-15px);
@@ -204,8 +184,8 @@
       transform: translateX(0);
     }
     40% {
-      -ms-transform: translateX(-30px);
-      transform: translateX(-30px);
+      -ms-transform: translateX(-17px);
+      transform: translateX(-17px);
     }
     60% {
       -ms-transform: translateX(-15px);
@@ -220,14 +200,16 @@
     -webkit-animation: bounceRight 2s infinite;
     animation: bounceRight 2s infinite;
     float:right;
-    top: -1.4em;
+    top: -26px;
     position: relative;
+    right: 15px;
   }
 
   .fa-arrow-left {
     -webkit-animation: bounceLeft 2s infinite;
     animation: bounceLeft 2s infinite;
-    top: -1.4em;
+    top: -26px;
     position: relative;
+    left: 15px;
   }
 

@@ -47,8 +47,10 @@ export class PokemonComponent implements OnInit {
   }
 
   handlePokemonSelect(event) {
-    this.getPokemon(event.name);
-    this.isOpen = false;
+    if (event) {
+      this.getPokemon(event.name);
+      this.isOpen = false;
+    }
   }
 
   async attemptFetchPokemon(pokemon) {
