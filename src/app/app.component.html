@@ -3,8 +3,6 @@
     <app-pokemon *ngIf="pokemonList" [pokemonList]="pokemonList" [cap]="cap" [statDiffData]="statDiff1" (pokemonData)="setPokemonName($event, 1)" (pokeStats)="updateStatData('pokedex1', $event)"
       [pokedex1]='pokedex1' class="firstPokedex pokedex"></app-pokemon>
     <span class="pokeball-gif-container">
-      <!-- <img id="pokeballGif" class="pokeball-gif" src="https://media.giphy.com/media/klNrnUSZrzZLO/giphy.gif"> -->
-      <div class="blocker"></div>
     </span>
     <app-pokemon *ngIf="pokemonList" [pokemonList]="pokemonList" [cap]="cap" [statDiffData]="statDiff2" (pokemonData)="setPokemonName($event, 2)" (pokeStats)="updateStatData('pokedex2', $event)"
       [pokedex2]='pokedex2' class="secondPokedex pokedex"></app-pokemon>
