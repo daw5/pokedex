@@ -22,9 +22,7 @@
     <div class="pokedex-data">
       <div class="error-container">
         <p class="error">{{error && "Pokemon not found"}}</p>
-        <i [style.display]="display" class="fa fa-arrow-right"></i>
         <p [style.display]="display" class="search-for">Search for a pokemon</p>
-        <i [style.display]="display" class="fa fa-arrow-left"></i>
       </div>
       <div class="sprite-container" (click)="toggleSprites()">
         <img src={{spriteFront}}>
