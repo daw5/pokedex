@@ -11,6 +11,10 @@
   min-width: 168.28px;
 }
 
+::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+  margin-left: 3px;
+}
+
 :host(.firstPokedex) {
     float: left;
 }
