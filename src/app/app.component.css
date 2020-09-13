@@ -12,7 +12,7 @@
 }
 
 #chart {
-    top: 3vh;
+    top: 1vh;
     position: relative;
     width: 100%;
 }
@@ -66,10 +66,6 @@
 
   .secondPokedex {
     grid-column: 2;
-  }
-
-  #chart {
-    top: 1vh;
   }
 }
 
