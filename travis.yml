@@ -1,0 +1,38 @@
+language: node_js
+
+node_js:
+  - 10.15.1
+
+cache:
+  directories:
+    - node_modules
+
+branches:
+  only:
+    - staging
+    - master
+
+before_script:
+  - npm install
+
+script:
+  - if [[ "$TRAVIS_BRANCH" = "master" || "$TRAVIS_BRANCH" = "staging" ]]; then npm run build; else echo "not a build branch"; fi
+
+before_deploy:
+  - cd $TRAVIS_BUILD_DIR
+  - sed -i '/dist/d' .gitignore
+  - git add . && git commit -m "latest build"
+
+deploy:
+  - provider: elasticbeanstalk
+    access_key_id: ${AKIAIOZJJITHCCUMJ3AA}      // You have use environment variable name instead of plain text
+    secret_access_key: ${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}     // You have use environment variable name instead of plain text
+    region: "ca-central-1"            // "ap-south-1"
+    app: "Pokedex"                     // "demo-application"
+    env: "Pokedex-env"                     // "demo-production"
+    bucket_name: "elasticbeanstalk-ca-central-1-770780049042" // Once you create new application, it will automatically create a unique bucket for it.
+    on:
+      branch: - master
+
+after_deploy:
+  - echo "Applcation Deployed!"
