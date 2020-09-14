@@ -79,8 +79,16 @@ export class PokemonComponent implements OnInit {
     }
   }
 
+  clearSearch() {
+    let inputs = document.querySelectorAll(".ng-value");
+    inputs.forEach(input => {
+      input.textContent = "";
+    })
+  }
+
   displayInfo(pokemon) {
     if (pokemon) {
+      this.clearSearch();
       this.pokeStats.emit(this.pokemon.stats);
       this.spriteFront = this.pokemon.sprites.front_default;
       this.spriteBack = this.pokemon.sprites.back_default;
