@@ -32,7 +32,8 @@ deploy:
     env: "Pokedex-env"
     bucket_name: "elasticbeanstalk-ca-central-1-770780049042"
     on:
-      branch: - master
+      branch:
+        - master
 
 after_deploy:
   - echo "Applcation Deployed!"
