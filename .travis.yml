@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - 12
+  - 10.15.1
 
 cache:
   directories:
@@ -19,6 +19,7 @@ script:
   - if [[ "$TRAVIS_BRANCH" = "master" || "$TRAVIS_BRANCH" = "staging" ]]; then npm run build; else echo "not a build branch"; fi
 
 before_deploy:
+  - cd $TRAVIS_BUILD_DIR
   - sed -i '/dist/d' .gitignore
   - git add . && git commit -m "latest build"
 
