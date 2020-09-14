@@ -1,10 +1,5 @@
-language: node_js
-
 node_js:
   - 10.15.1
-
-sudo: true
-dist: trusty
 
 cache:
   directories:
@@ -12,13 +7,14 @@ cache:
 
 branches:
   only:
+    - staging
     - master
 
 before_script:
   - npm install
 
 script:
-  - if [[ "$TRAVIS_BRANCH" = "master" ]]; then npm run build; else echo "not a build branch"; fi
+  - if [[ "$TRAVIS_BRANCH" = "master" || "$TRAVIS_BRANCH" = "staging" ]]; then npm run build; else echo "not a build branch"; fi
 
 before_deploy:
   - cd $TRAVIS_BUILD_DIR
@@ -27,15 +23,14 @@ before_deploy:
 
 deploy:
   - provider: elasticbeanstalk
-    access_key_id: ${AWS_ACCESS_KEY_ID}      // You have use environment variable name instead of plain text
-    secret_access_key: ${AWS_SECRET_ACCESS_KEY}     // You have use environment variable name instead of plain text
-    region: "ca-central-1"            // "ap-south-1"
-    app: "Pokedex"                     // "demo-application"
-    env: "Pokedex-env"                     // "demo-production"
-    bucket_name: "elasticbeanstalk-ca-central-1-770780049042" // Once you create new application, it will automatically create a unique bucket for it.
+    access_key_id: ${AWS_ACCESS_KEY_ID}
+    secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+    region: "ca-central-1"
+    app: "Pokedex"
+    env: "Pokedex-env"
+    bucket_name: "elasticbeanstalk-ca-central-1-770780049042"
     on:
-      branch:
-        - master
+      branch: - master
 
 after_deploy:
   - echo "Applcation Deployed!"
