@@ -3,20 +3,22 @@ language: node_js
 node_js:
   - 10.15.1
 
+sudo: true
+dist: trusty
+
 cache:
   directories:
     - node_modules
 
 branches:
   only:
-    - staging
     - master
 
 before_script:
   - npm install
 
 script:
-  - if [[ "$TRAVIS_BRANCH" = "master" || "$TRAVIS_BRANCH" = "staging" ]]; then npm run build; else echo "not a build branch"; fi
+  - if [[ "$TRAVIS_BRANCH" = "master" ]]; then npm run build; else echo "not a build branch"; fi
 
 before_deploy:
   - cd $TRAVIS_BUILD_DIR
@@ -32,7 +34,8 @@ deploy:
     env: "Pokedex-env"                     // "demo-production"
     bucket_name: "elasticbeanstalk-ca-central-1-770780049042" // Once you create new application, it will automatically create a unique bucket for it.
     on:
-      branch: - master
+      branch:
+        - master
 
 after_deploy:
   - echo "Applcation Deployed!"
