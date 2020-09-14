@@ -25,8 +25,8 @@ before_deploy:
 
 deploy:
   - provider: elasticbeanstalk
-    access_key_id: ${AKIAIOZJJITHCCUMJ3AA}      // You have use environment variable name instead of plain text
-    secret_access_key: ${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}     // You have use environment variable name instead of plain text
+    access_key_id: ${AWS_ACCESS_KEY_ID}      // You have use environment variable name instead of plain text
+    secret_access_key: ${AWS_SECRET_ACCESS_KEY}     // You have use environment variable name instead of plain text
     region: "ca-central-1"            // "ap-south-1"
     app: "Pokedex"                     // "demo-application"
     env: "Pokedex-env"                     // "demo-production"
