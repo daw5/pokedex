@@ -130,7 +130,7 @@ export class AppComponent implements OnInit {
 
   async fetchPokemonList() {
     try {
-      return await P.getPokemonsList({limit: 721});
+      return await P.getPokemonsList({limit: 649});
     }
 
     catch (err) {
