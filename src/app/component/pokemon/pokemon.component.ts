@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ViewChildren, ElementRef, QueryList} from '@angular/core';
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import * as Pokedex from 'pokeapi-js-wrapper';
 const P = new Pokedex.Pokedex();
 
@@ -13,15 +13,15 @@ export class PokemonComponent implements OnInit {
   @ViewChild('select') select;
 
   pokemon;
-  loading: boolean = false;
+  error: string;
   firstResult: string;
+  searchInput: string = "";
   display: string = 'block';
-  spriteType: Number = 1;
   spriteFront: string;
   spriteBack: string;
-  error: string;
-  searchInput: string = "";
-  isOpen = false;
+  spriteType: Number = 1;
+  loading: boolean = false;
+  dropdownIsOpen: boolean = false;
 
   @Input() public pokemonList;
   @Input() public statDiffData;
@@ -37,9 +37,9 @@ export class PokemonComponent implements OnInit {
 
   toggleDropdown(event) {
     if (event.term.length > 0) {
-      this.isOpen = true;
+      this.dropdownIsOpen = true;
     } else {
-      this.isOpen = false;
+      this.dropdownIsOpen = false;
     }
   }
 
@@ -52,7 +52,7 @@ export class PokemonComponent implements OnInit {
 
     if (event) {
       this.getPokemon(event.name);
-      this.isOpen = false;
+      this.dropdownIsOpen = false;
     }
   }
 

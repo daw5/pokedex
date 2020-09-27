@@ -6,7 +6,7 @@
           bindValue="name"
           [(ngModel)]="searchInput"
           (search)="onInputChange($event)"
-          [isOpen]="isOpen"
+          [isOpen]="dropdownIsOpen"
           (change)="handlePokemonSelect($event)"
           [clearable]="false"
           notFoundText="Pokemon not found"
