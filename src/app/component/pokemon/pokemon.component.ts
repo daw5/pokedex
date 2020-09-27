@@ -47,6 +47,8 @@ export class PokemonComponent implements OnInit {
   }
 
   handlePokemonSelect(event) {
+    this.select.blur()
+
     if (event) {
       this.getPokemon(event.name);
       this.isOpen = false;
@@ -76,6 +78,7 @@ export class PokemonComponent implements OnInit {
       this.attemptFetchPokemon(input).then((pokemon) => this.displayInfo(pokemon));
     } else {
       this.error = "Pokemon does not exist";
+      this.clearSearch();
     }
   }
 
@@ -83,7 +86,10 @@ export class PokemonComponent implements OnInit {
     let inputs = document.querySelectorAll(".ng-value");
     inputs.forEach(input => {
       input.textContent = "";
-    })
+    });
+    setTimeout(() => {
+      this.select.focus();
+    }, 100)
   }
 
   displayInfo(pokemon) {
