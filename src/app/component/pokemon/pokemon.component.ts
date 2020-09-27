@@ -13,6 +13,7 @@ export class PokemonComponent implements OnInit {
   @ViewChild('select') select;
 
   pokemon;
+  loading: boolean = false;
   firstResult: string;
   display: string = 'block';
   spriteType: Number = 1;
@@ -74,10 +75,12 @@ export class PokemonComponent implements OnInit {
 
   getPokemon(input) {
     this.clearDisplay();
+    this.loading = true;
     if (this.pokemonExists(input)) {
       this.attemptFetchPokemon(input).then((pokemon) => this.displayInfo(pokemon));
     } else {
       this.error = "Pokemon does not exist";
+      this.loading = false;
       this.clearSearch();
     }
   }
@@ -94,6 +97,7 @@ export class PokemonComponent implements OnInit {
 
   displayInfo(pokemon) {
     if (pokemon) {
+      this.loading = false;
       this.clearSearch();
       this.pokeStats.emit(this.pokemon.stats);
       this.spriteFront = this.pokemon.sprites.front_default;

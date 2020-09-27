@@ -12,14 +12,16 @@
           notFoundText="Pokemon not found"
     >
     </ng-select>
-
-  <div id="type-container" class="type-container">
-    <p [style.display]="display" class="search-for">Search for a pokemon</p>
-    <span class="type" [style.background-color]="determineClass(type)" *ngFor="let type of this.pokemon?.types">
-      {{this.cap(type.type.name)}}
-    </span>
-  </div>
-    <div class="pokedex-data">
+    <div id="type-container" class="type-container">
+      <p [style.display]="display" class="search-for">Search for a pokemon</p>
+      <span class="type" [style.background-color]="determineClass(type)" *ngFor="let type of this.pokemon?.types">
+        {{this.cap(type.type.name)}}
+      </span>
+    </div>
+    <div class="loading-gif-container">
+      <img *ngIf="loading" class="loading-gif" src="../../../assets/visuals/loading.gif">
+    </div>
+    <div *ngIf="!loading" class="pokedex-data">
       <div *ngIf="error" class="error-container">
         <p class="error">{{error && "Pokemon not found"}}</p>
       </div>

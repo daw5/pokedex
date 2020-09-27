@@ -90,8 +90,8 @@
 .sprite-container {
   display: grid;
   grid-template-columns: 50% 50%;
-  height: 96px;
   grid-row: 3;
+  height: 96px;
 }
 
 .search-for {
@@ -101,9 +101,16 @@
     margin-top: 5px;
 }
 
+.loading-gif-container {
+  grid-row: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .loading-gif {
-  width: 200px;
-  height: 90%;
+  max-width: 200px;
 }
 
 @media only screen and (max-width: 900px) {
