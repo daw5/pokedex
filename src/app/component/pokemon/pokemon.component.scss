@@ -3,18 +3,22 @@
     margin: 10px auto;
 }
 
+.error-container {
+  grid-row: 2;
+}
+
 ::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
   top: 9px;
 }
 
 ::ng-deep .ng-select.ng-select-single .ng-select-container {
   min-width: 192px;
+  grid-row: 1;
 }
 
 ::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container, .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
   margin-left: 3px;
 }
-
 
 .type {
   border: 3px solid white;
@@ -22,18 +26,24 @@
   padding: 0 1em;
   margin: 0.5em 0.5em;
   height: 1.5em;
+  line-height: 1.5;
   background-color: black;
-  position: relative;
-  top: 1em;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .type-container {
   text-align: center;
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pokedex-container {
     margin: 10px auto;
+    display: grid;
+    grid-template-rows: 36px 30px 94px 220px;
+    grid-row-gap: 10px;
 }
 
 .pokedex-data-container {
@@ -45,20 +55,32 @@
     width: 192px;
 }
 
+.stats-section {
+  grid-row: 4;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
 .statDifferences {
-    color: rgb(19, 219, 19);
+  text-align: right;
+}
+
+.statDifferencesPositive {
+  @extend .statDifferences;
+  color: rgb(19, 219, 19);
 }
 
 .statDifferencesNegative {
+    @extend .statDifferences;
     color: rgba(240, 240, 4, 0.986);
 }
 
 .statDiv {
-    float: left;
+    grid-column: 1;
 }
 
 .statDiffDiv {
-    float: right;
+    grid-column: 2;
 }
 
 .sprite-container:hover {
@@ -66,15 +88,17 @@
 }
 
 .sprite-container {
-  margin-top: 1em;
   display: grid;
   grid-template-columns: 50% 50%;
   height: 96px;
+  grid-row: 3;
 }
 
 .search-for {
     color: white;
     text-align: center;
+    grid-column: 1 / span 2;
+    margin-top: 5px;
 }
 
 .loading-gif {
@@ -109,6 +133,11 @@
     height: 100%;
     font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
+  }
+
+  .pokedex-container {
+    grid-template-rows: 36px 40px 94px 250px;
+    grid-row-gap: 30px;
   }
 
   .pokedex-data-container {

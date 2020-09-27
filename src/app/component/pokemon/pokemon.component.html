@@ -14,28 +14,28 @@
     </ng-select>
 
   <div id="type-container" class="type-container">
+    <p [style.display]="display" class="search-for">Search for a pokemon</p>
     <span class="type" [style.background-color]="determineClass(type)" *ngFor="let type of this.pokemon?.types">
       {{this.cap(type.type.name)}}
     </span>
   </div>
-  <div class="pokedex-data-container">
     <div class="pokedex-data">
-      <div class="error-container">
+      <div *ngIf="error" class="error-container">
         <p class="error">{{error && "Pokemon not found"}}</p>
-        <p [style.display]="display" class="search-for">Search for a pokemon</p>
       </div>
-      <div class="sprite-container" (click)="toggleSprites()">
+      <div *ngIf="!error" class="sprite-container" (click)="toggleSprites()">
         <img src={{spriteFront}}>
         <img src={{spriteBack}}>
       </div>
-      <div class="statDiv">
-        <p *ngFor="let stat of pokemon?.stats">{{this.cap(stat?.stat.name)}}: {{
-          stat?.base_stat }}</p>
-      </div>
-      <div class="statDiffDiv">
-        <p [className]="statDiff > -1 ? 'statDifferences' : 'statDifferencesNegative'" *ngFor="let statDiff of statDiffData">{{
-          statDiff}}</p>
-      </div>
+      <div class="stats-section">
+        <div class="statDiv">
+          <p *ngFor="let stat of pokemon?.stats">{{this.cap(stat?.stat.name)}}: {{
+            stat?.base_stat }}</p>
+        </div>
+        <div class="statDiffDiv">
+          <p [className]="statDiff > -1 ? 'statDifferencesPositive' : 'statDifferencesNegative'" *ngFor="let statDiff of statDiffData">{{
+            statDiff}}</p>
+        </div>
     </div>
   </div>
 </div>
