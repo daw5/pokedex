@@ -15,6 +15,7 @@
   margin-left: 3px;
 }
 
+
 .type {
   border: 3px solid white;
   border-radius: 25px;
@@ -89,12 +90,35 @@
 
 @media only screen and (max-width: 450px) {
   ::ng-deep .ng-select.ng-select-single .ng-select-container {
-    min-width: 175px;
+    min-width: 230px;
+    font-size: 20px;
+  }
+
+  ::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+    font-size: 20px;
+    height: 100%;
+    top: 0;
+  }
+
+  ::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+    height: 100%;
+    top: 0;
+  }
+
+  ::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input input {
+    height: 100%;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
   }
 
   .pokedex-data-container {
     align-items: center;
     justify-content: center;
+  }
+
+  .pokedex {
+    max-height: 100vh;
+    height: 100vh;
   }
 
   .pokedex-data {
