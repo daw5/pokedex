@@ -112,7 +112,8 @@ export class PokemonComponent implements OnInit {
 
   playSound() {
     const sound = new Howl({
-      src: ['/assets/old/' + this.pokemon.id + '.ogg']
+      src: ['/assets/old/' + this.pokemon.id + '.ogg'],
+      html5: true
     });
     sound.play();
   }
