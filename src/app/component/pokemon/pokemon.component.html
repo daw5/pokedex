@@ -18,8 +18,8 @@
         {{this.cap(type.type.name)}}
       </span>
     </div>
-    <div class="loading-gif-container">
-      <img *ngIf="loading" class="loading-gif" src="../../../assets/visuals/loading.gif">
+    <div *ngIf="loading" class="loading-gif-container">
+      <img class="loading-gif" src="../../../assets/visuals/loading.gif">
     </div>
     <div *ngIf="!loading" class="pokedex-data">
       <div *ngIf="error" class="error-container">
