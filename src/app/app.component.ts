@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
         data: this.curateStats(this.statData.pokedex2)
       }],
       xaxis: {
-        categories: ['HP', 'Attack', 'Special Attack', 'Defense', 'Special Defense', 'Speed'],
+        categories: ['HP', 'Attack', 'Defense', 'Special Attack', 'Special Defense', 'Speed'],
       },
       fill: {
         opacity: 1
