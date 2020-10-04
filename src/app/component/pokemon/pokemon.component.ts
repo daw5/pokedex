@@ -97,11 +97,11 @@ export class PokemonComponent implements OnInit {
 
   displayInfo(pokemon) {
     if (pokemon) {
+      this.spriteFront = this.pokemon.sprites.front_default;
+      this.spriteBack = this.pokemon.sprites.back_default;
       this.loading = false;
       this.clearSearch();
       this.pokeStats.emit(this.pokemon.stats);
-      this.spriteFront = this.pokemon.sprites.front_default;
-      this.spriteBack = this.pokemon.sprites.back_default;
       this.playSound();
     }
   }
