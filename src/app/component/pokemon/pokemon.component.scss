@@ -91,15 +91,14 @@
 .sprite-container {
   display: grid;
   grid-template-columns: 50% 50%;
-  // grid-row: 3;
   height: 96px;
 }
 
 .search-for {
-    color: white;
-    text-align: center;
-    grid-column: 1 / span 2;
-    margin-top: 5px;
+  color: white;
+  text-align: center;
+  grid-column: 1 / span 2;
+  margin-top: 5px;
 }
 
 .loading-gif-container {
