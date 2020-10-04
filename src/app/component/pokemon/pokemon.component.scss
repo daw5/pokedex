@@ -143,18 +143,12 @@
   }
 
   .pokedex-container {
-    grid-template-rows: 36px 40px 94px 250px;
-    grid-row-gap: 30px;
+    grid-template-rows: 36px 10px 94px 10px minmax(400px, auto);
   }
 
   .pokedex-data-container {
     align-items: center;
     justify-content: center;
-  }
-
-  .pokedex {
-    max-height: 100vh;
-    height: 100vh;
   }
 
   .pokedex-data {
